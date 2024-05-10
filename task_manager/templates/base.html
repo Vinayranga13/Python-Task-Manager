@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Task Manager</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}"> <!-- Link to the main CSS -->
+
+    {% load static %}  
+
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
     <script src="{% static 'script.js' %}"></script>
 </head>
 <body>

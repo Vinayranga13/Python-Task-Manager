@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
 
+{% load static %}  <!-- Load static at the top -->
+
 {% block content %}
 <h1>Tasks</h1>
+
 <div class="color-theme">
-    <!-- Theme images to change the background color -->
+    <!-- Load theme images and link to the changeTheme function -->
     <img src="{% static 'images/orange.png' %}" alt="Orange Theme" onclick="changeTheme('orange')">
     <img src="{% static 'images/ivory.png' %}" alt="Ivory Theme" onclick="changeTheme('ivory')">
     <img src="{% static 'images/cream.png' %}" alt="Cream Theme" onclick="changeTheme('cream')">
@@ -13,10 +16,10 @@
 
 <div class="task-list">
     {% for task in tasks %}
-        <div 
+        <div
           class="task-box"
           onclick="window.location.href='{% url 'task_detail' task.pk %}'"
-          style="{% if task.completed or task.due_date < timezone.now().date() %}font-style: italic; text-decoration: line-through;{% endif %}"
+          style="{% if task.completed or task.due_date < current_date %}font-style: italic; text-decoration: line-through;{% endif %}"
         >
             <h3>{{ task.title }}</h3>
             <p>{{ task.description | truncatewords:10 }}</p>
@@ -32,5 +35,7 @@
         </div>
     {% endfor %}
 </div>
+
 <button onclick="window.location.href='{% url 'task_add' %}'">Add Task</button>
+
 {% endblock %}
