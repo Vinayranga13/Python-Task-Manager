@@ -1,11 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http import HttpResponse
 from .models import Task
 from .forms import TaskForm
 
 # Display the list of tasks
 def task_list(request):
-    tasks = Task.objects.all().order_by('due_date')
+    tasks = Task.objects.all().order by('due_date')
     return render(request, 'tasks/task_list.html', {'tasks': tasks})
 
 # Task detail view
