@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>PedalStart Tasks</h1>
+<h1>Tasks</h1>
 <div class="color-theme">
     <!-- Theme images to change the background color -->
     <img src="{% static 'images/orange.png' %}" alt="Orange Theme" onclick="changeTheme('orange')">
@@ -13,9 +13,13 @@
 
 <div class="task-list">
     {% for task in tasks %}
-        <div class="task-box" onclick="window.location.href='{% url 'task_detail' task.pk %}'" style="{% if task.completed or task.due_date < timezone.now().date() %}font-style: italic; text-decoration: line-through;{% endif %}">
+        <div 
+          class="task-box"
+          onclick="window.location.href='{% url 'task_detail' task.pk %}'"
+          style="{% if task.completed or task.due_date < timezone.now().date() %}font-style: italic; text-decoration: line-through;{% endif %}"
+        >
             <h3>{{ task.title }}</h3>
-            <p>{{ task.description|truncatewords:10 }}</p>
+            <p>{{ task.description | truncatewords:10 }}</p>
             <span>Due: {{ task.due_date }}</span>
             <div class="task-options">
                 <span onclick="event.stopPropagation();">⋮</span>
