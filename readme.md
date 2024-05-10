@@ -1,7 +1,8 @@
 Creating a README file is crucial for documenting the setup and running 
 # Task Manager PedalStart
 
-This project is a simple Task Manager application built with Django. It allows users to create, edit, and manage tasks. The project uses Django for the backend, with HTML, CSS, and JavaScript for the frontend.
+This project is a simple Task Manager application built with Django as a Assignment for PedalStart.
+It allows users to create, edit, and manage tasks. The project uses Django for the backend, with HTML, CSS, and JavaScript for the frontend.
 
 ## Requirements
 
