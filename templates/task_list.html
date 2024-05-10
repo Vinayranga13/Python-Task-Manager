@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>PedalStart Tasks</h1>
+<div class="color-theme">
+    <!-- Theme images to change the background color -->
+    <img src="{% static 'images/orange.png' %}" alt="Orange Theme" onclick="changeTheme('orange')">
+    <img src="{% static 'images/ivory.png' %}" alt="Ivory Theme" onclick="changeTheme('ivory')">
+    <img src="{% static 'images/cream.png' %}" alt="Cream Theme" onclick="changeTheme('cream')">
+    <img src="{% static 'images/black.png' %}" alt="Black Theme" onclick="changeTheme('black')">
+    <img src="{% static 'images/limestone.png' %}" alt="Limestone Theme" onclick="changeTheme('limestone')">
+</div>
+
+<div class="task-list">
+    {% for task in tasks %}
+        <div class="task-box" onclick="window.location.href='{% url 'task_detail' task.pk %}'" style="{% if task.completed or task.due_date < timezone.now().date() %}font-style: italic; text-decoration: line-through;{% endif %}">
+            <h3>{{ task.title }}</h3>
+            <p>{{ task.description|truncatewords:10 }}</p>
+            <span>Due: {{ task.due_date }}</span>
+            <div class="task-options">
+                <span onclick="event.stopPropagation();">⋮</span>
+                <div class="dropdown-menu">
+                    <a href="{% url 'task_edit' task.pk %}">Edit</a>
+                    <a href="{% url 'task_delete' task.pk %}" onclick="return confirm('Are you sure?');">Delete</a>
+                    <a href="#" onclick="markDone('{{ task.pk }}')">Mark Done</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<button onclick="window.location.href='{% url 'task_add' %}'">Add Task</button>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ task.title }}</h1>
+<p>{{ task.description }}</p>
+<p>Due Date: {{ task.due_date }}</p>
+{% if task.image %}
+    <img src="{{ task.image.url }}" alt="{{ task.title }}">
+{% endif %}
+<button onclick="window.location.href='{% url 'task_edit' task.pk %}'">Edit</button>
+{% endblock %}
