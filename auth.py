@@ -16,4 +16,16 @@ def login():
             return redirect(url_for('home'))
     return render_template('login.html', form=form)
 
-
+@auth_blueprint.route('/signup', methods=['GET', 'POST'])
+def signup():
+    form = SignupForm()
+    if form.validate_on_submit():
+        new_user = User(
+            email=form.email.data,
+            name=form.name.data,
+            password=generate_password_hash(form.password.data)
+        )
+        db.session.add(new_user)
+        db.session.commit()
+        return redirect(url_for('auth.login'))
+    return render_template('signup.html', form=form)
