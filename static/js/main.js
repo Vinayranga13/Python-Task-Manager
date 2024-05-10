@@ -1,30 +1,35 @@
-$(document).ready(function() {
-    $('.task-item').each(function(index) {
-        $(this).addClass('animate__animated animate__fadeInLeft');
-    });
+function changeTheme(theme) {
+    let bgColor, textColor;
+    switch (theme) {
+        case 'orange':
+            bgColor = '#DC6D18';
+            textColor = 'white';
+            break;
+        case 'ivory':
+            bgColor = '#FFF4E4';
+            textColor = 'black';
+            break;
+        case 'cream':
+            bgColor = '#F8E0C9';
+            textColor = 'black';
+            break;
+        case 'black':
+            bgColor = '#2B1A12';
+            textColor = 'white';
+            break;
+        case 'limestone':
+            bgColor = '#B1AA81';
+            textColor = 'black';
+            break;
+        default:
+            bgColor = '#f5f5f5';
+            textColor = 'black';
+    }
 
-    $('.delete-task').on('click', function(e) {
-        e.preventDefault();
-        const taskElement = $(this).closest('.task-item');
-        taskElement.addClass('animate__fadeOutRight');
+    document.body.style.backgroundColor = bgColor;
+    document.body.style.color = textColor;
+}
 
-        setTimeout(function() {
-            taskElement.find('form').submit();
-        }, 500); 
-    });
-
-    $('a').on('click', function(e) {
-        const href = $(this).attr('href');
-        if (href && !$(this).hasClass('prevent-default')) {
-            e.preventDefault();
-            $('body').addClass('animate__fadeOut');
-            setTimeout(function() {
-                window.location.href = href;
-            }, 500); // Delay for animation
-        }
-    });
-
-    $('.add-task').on('click', function() {
-        $('.task-form').addClass('animate__animated animate__bounceIn');
-    });
-});
+function markDone(taskId) {
+    // Implement marking a task as completed or similar logic
+}
