@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Sign Up</h1>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.email.label }}: {{ form.email() }}
+            </p>
+            <p>
+                {{ form.name.label }}: {{ form.name() }}
+            </p>
+            <p>
+                {{ form.password.label }}: {{ form.password() }}
+            </p>
+            <p>
+                <input type="submit" value="Sign Up">
+            </p>
+        </form>
+        <a href="{{ url_for('auth.login') }}">Back to Login</a>
+    </div>
+</body>
+</html>
