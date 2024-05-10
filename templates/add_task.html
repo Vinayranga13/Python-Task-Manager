@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Task</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="animate__animated animate__fadeIn">Add a New Task</h1>
+        <form method="POST" enctype="multipart/form-data" class="task-form">
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.title.label }}: {{ form.title() }}
+            </p>
+            <p>
+                {{ form.description.label }}: {{ form.description() }}
+            </p>
+            <p>
+                {{ form.due_date.label }}: {{ form.due_date() }}
+            </p>
+            <p>
+                {{ form.image.label }}: {{ form.image() }}
+            </p>
+            <p>
+                <input type="submit" value="Add Task">
+            </p>
+        </form>
+        <a href="{{ url_for('home') }}">Back to Home</a>
+    </div>
+</body>
+</html>
