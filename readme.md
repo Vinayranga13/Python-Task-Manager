@@ -16,8 +16,8 @@ It allows users to create, edit, and manage tasks. The project uses Django for t
 
 
 ```bash
-git clone <your-repo-url>
-cd <your-repo-folder>
+git clone https://github.com/Vinayranga13/TaskManager.git
+cd TaskManager
 ```
 
 ### 2. Create a Virtual Environment
